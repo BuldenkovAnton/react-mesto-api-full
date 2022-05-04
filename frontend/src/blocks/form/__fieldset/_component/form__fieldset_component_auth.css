@@ -1,0 +1,9 @@
+.form__fieldset_component_auth:first-child {
+    margin-bottom: 160px;
+}
+
+@media screen and (max-width: 555px){
+    .form__fieldset_component_auth:first-child {
+        margin-bottom: 119px;
+    }
+}

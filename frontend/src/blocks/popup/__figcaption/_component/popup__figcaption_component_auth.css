@@ -1,0 +1,14 @@
+.popup__figcaption_component_auth {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000;
+}
+
+@media screen and (max-width: 555px){
+    .popup__figcaption_component_auth {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

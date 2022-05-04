@@ -1,0 +1,14 @@
+.form__title_type_auth {
+    color: #fff;
+    margin: 20px 0 50px;
+    text-align: center;
+}
+
+@media screen and (max-width: 555px){
+    .form__title_type_auth {
+        margin: 0 0 40px;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

@@ -1,0 +1,9 @@
+.user_show {
+
+}
+
+@media screen and (max-width: 555px){
+    .user_show {
+        display: flex!important;
+    }
+}

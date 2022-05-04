@@ -1,0 +1,7 @@
+.user_mobile {
+    display: none;
+    border-bottom: 1px solid #545454;
+    padding: 40px 30px;
+    flex-direction: column;
+    text-align: center;
+}

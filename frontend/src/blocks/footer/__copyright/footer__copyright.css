@@ -1,0 +1,17 @@
+.footer__copyright {
+    box-sizing: border-box;
+    width: 318px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+}
+
+@media screen and (max-width: 950px) {
+    .footer__copyright {
+        padding: 0 19px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

@@ -1,0 +1,16 @@
+.user__logout {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #A9A9A9;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+@media screen and (max-width:555px) {
+    .user__logout {
+        margin-right: 0;
+    }
+}

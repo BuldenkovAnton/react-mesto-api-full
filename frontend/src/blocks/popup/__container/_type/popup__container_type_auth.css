@@ -1,0 +1,10 @@
+.popup__container_type_auth {
+    padding: 50px 36px;
+}
+
+
+@media screen and (max-width: 555px){
+    .popup__container_type_auth {
+        padding: 50px 18px;
+    }    
+}

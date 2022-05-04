@@ -1,0 +1,13 @@
+.header__container {
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    padding: 45px 0 37px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 555px) {
+    .header__container {
+        padding: 28px 0 26.6px;
+    }
+}

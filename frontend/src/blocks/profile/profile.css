@@ -1,0 +1,25 @@
+.profile {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 120px 1fr 150px;
+    gap: 30px;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 950px) {
+    .profile {
+        padding: 0 19px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        padding: 0 19px;
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0;
+    }
+}

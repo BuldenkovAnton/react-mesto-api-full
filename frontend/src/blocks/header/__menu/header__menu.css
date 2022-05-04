@@ -1,0 +1,15 @@
+.header__menu {
+    display: none;
+    border: 0;
+    background-color: transparent;
+    background-image: url('../../../images/menu-bar.svg');
+    width: 24px;
+    height: 21px;
+    margin-right: 25px;
+}
+
+@media screen and (max-width: 555px){
+    .header__menu {
+        display: flex;
+    }
+}

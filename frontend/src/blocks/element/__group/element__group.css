@@ -1,0 +1,9 @@
+.element__group {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 22px;
+    grid-template-areas: 
+        "element__title element__like";
+    padding: 26px 20px 25px 22px;
+    column-gap: 20px;
+}

@@ -1,0 +1,10 @@
+.popup__image_component_auth {
+    width: 120px;
+    margin-bottom: 43px;
+}
+
+@media screen and (max-width: 555px){
+    .popup__image_component_auth {
+        margin-bottom: 40px;
+    }    
+}
