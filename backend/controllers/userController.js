@@ -22,7 +22,7 @@ module.exports.login = async (req, res, next) => {
       expiresIn: 3600,
     });
     return res
-      .cookie('jwtToken', token, { maxAge: 3600000 * 24 * 7, sameSite: true })
+      .cookie('jwtToken', token, { maxAge: 3600000 * 24 * 7, sameSite: true, domain: 'mesto.buldenkov.nomoredomains.xyz' })
       .send({ message: 'Пользователь успешно авторизован' });
   } catch (err) {
     return next(err);
