@@ -100,14 +100,14 @@ class Api {
     });
   }
 
-
+  
 
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-34',
+  baseUrl: 'http://mesto.buldenkov.nomoredomains.xyz',
   headers: {
-    authorization: '5f717fb3-20f3-4958-9050-7183c329d1d2',
+   // authorization: '5f717fb3-20f3-4958-9050-7183c329d1d2',
     'Content-Type': 'application/json'
   }
 });
