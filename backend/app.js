@@ -26,7 +26,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 const app = express();
 const { PORT = 3000 } = process.env;
 
-app.use(cors);
 app.use(limiter);
 app.use(helmet());
 app.use(cookieParser());
@@ -34,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(requestLogger);
-
+app.use(cors);
 app.post('/signin', celebrate({ body: signinSchema }), login);
 app.post('/signup', celebrate({ body: signupSchema }), createUser);
 app.get('/signout', auth, logout);
