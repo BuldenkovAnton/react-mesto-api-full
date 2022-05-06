@@ -27,6 +27,7 @@ const app = express();
 const { PORT = 3000 } = process.env;
 
 app.use(limiter);
+
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
