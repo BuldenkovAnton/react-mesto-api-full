@@ -45,7 +45,7 @@ function Main(props) {
           ></button>
         </section>
         <section className="elements page__elements" aria-label="Элементы">
-          {props.cards &&
+          {props.cards ?
             props.cards.map((card) => (
               <Card
                 card={card}
@@ -54,7 +54,7 @@ function Main(props) {
                 onCardClick={props.onCardClick}
                 onCardDelete={props.onCardDelete}
               />
-            ))}
+            )) : null }
         </section>
       </main>
       <Footer />

@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Link, useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
-import * as auth from "../auth";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -52,7 +51,9 @@ function App(props) {
 
   const history = useHistory();
 
-  React.useEffect(() => tokenCheck(), []);
+  React.useEffect(() => {
+    tokenCheck()
+  }, []);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -170,7 +171,7 @@ function App(props) {
   function handleRegister({ email, password }) {
     setIsLoading(true);
 
-    return auth
+    return api
       .register(email, password)
       .then((response) => {
         history.push("/sign-in");
@@ -178,6 +179,7 @@ function App(props) {
       .catch((errorCode) => {
         let message = "Что-то пошло не так! Попробуйте еще раз!";
         if (errorCode === 400) message = "Некорректно заполнено одно из полей";
+        if (errorCode === 409) message = "Пользователь уже зарегистрирован с такой почтой";
 
         setAuthResultStatus(false);
         setIsAuthResultPopupOpen(true);
@@ -189,22 +191,23 @@ function App(props) {
   function handleLogin({ email, password }) {
     setIsLoading(true);
 
-    return auth
+    return api
       .authorize(email, password)
-      .then((token) => {
-        localStorage.setItem("token", token);
+      .then((message) => {
         tokenCheck();
       })
       .catch((errorCode) => {
-        let message = "Что-то пошло не так! Попробуйте еще раз!";
+        let message = "";
 
         switch (errorCode) {
           case 400:
             message = "Не передано одно из полей";
             break;
           case 401:
-            message = "Пользователь с email не найден";
+            message = "Неправильные почта или пароль";
             break;
+          default:
+            message = "Что-то пошло не так! Попробуйте еще раз!";  
         }
 
         setAuthResultStatus(false);
@@ -215,38 +218,35 @@ function App(props) {
   }
 
   function onSignOut() {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    history.push("/sign-in");
+    return api
+    .logout()
+    .then((message) => {
+      setLoggedIn(false);
+      history.push("/signin");
+    })
   }
 
   function tokenCheck() {
-    if (localStorage.getItem("token")) {
-      let token = localStorage.getItem("token");
-      auth
-        .checkMe(token)
-        .then((user) => {
-          setEmail(user.email);
-          setLoggedIn(true);
-        })
-        .catch((errorCode) => {
-          let message = "Что-то пошло не так! Попробуйте еще раз!";
+    return api
+      .checkMe()
+      .then((user) => {
+        setEmail(user.email);
+        setLoggedIn(true);
+      })
+      .catch((errorCode) => {
+        let message = "";
 
-          switch (errorCode) {
-            case 400:
-              message = "Токен не передан или передан не в том формате";
-              break;
-            case 401:
-              message = "Переданный токен некорректен";
-              break;
-          }
+        switch (errorCode) {
+          case 401:
+            message = "Необходима авторизация";
+            break;
+          default:
+            message = "Что-то пошло не так! Попробуйте еще раз!";
+        }
 
-          setAuthResultStatus(false);
-          setIsAuthResultPopupOpen(true);
-          setAuthResultMessage(message);
-        });
-    }
-  }
+      console.log(message);
+      });
+}
 
   function loadData() {
     return Promise.all([api.getUserInfo(), api.getCardList()])
