@@ -145,7 +145,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'api.mesto.buldenkov.nomoredomains.xyz',
   headers: {
     'Content-Type': 'application/json'
   }
