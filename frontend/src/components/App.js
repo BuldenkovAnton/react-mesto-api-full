@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Link, useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
+import getCookie from "../utils/cookie";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -227,7 +228,8 @@ function App(props) {
   }
 
   function tokenCheck() {
-    return api
+    if (getCookie('jwtToken')) {
+      return api
       .checkMe()
       .then((user) => {
         setEmail(user.email);
@@ -246,6 +248,7 @@ function App(props) {
 
       console.log(message);
       });
+    }
 }
 
   function loadData() {
