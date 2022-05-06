@@ -1,11 +1,12 @@
 const allowedCors = [
-  'https://nomoredomains.xyz',
-  'http://nomoredomains.xyz',
+  'https://mesto.buldenkov.nomoredomains.xyz',
+  'http://mesto.buldenkov.nomoredomains.xyz',
   'localhost:3000',
 ];
 
 module.exports.cors = (req, res, next) => {
   const { origin } = req.headers;
+  console.log(origin);
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Credentials', true);
