@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const { celebrate, errors } = require('celebrate');
 
+const { cors } = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { limiter } = require('./middlewares/limiter');
 const { auth } = require('./middlewares/auth');
@@ -27,6 +28,7 @@ const { PORT = 3000 } = process.env;
 
 app.use(limiter);
 app.use(helmet());
+app.use(cors);
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
